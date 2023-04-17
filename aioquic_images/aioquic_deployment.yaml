@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aioquic
+spec:
+  selector:
+    matchLabels:
+      app: aioquic
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: aioquic
+    spec:
+      containers:
+      - name: aioquic
+        image: "isteru/python-aioquic:0.2"
+        ports:
+        - containerPort: 4433
+          protocol: UDP
